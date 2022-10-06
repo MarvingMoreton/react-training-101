@@ -1,26 +1,39 @@
-import MeetupList from '../components/meetups/MeetupList';
+import React from "react";
+import MeetupList from "../components/meetups/MeetupList";
+import Head from "next/head";
 
 const DUMMY_MEETUPS = [
   {
-    id: 'm1',
-    title: 'A First Meetup',
+    id: "m1",
+    title: "A First Meetup",
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1280px-Stadtbild_M%C3%BCnchen.jpg',
-    address: 'Some address 5, 12345 Some City',
-    description: 'This is a first meetup!',
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1280px-Stadtbild_M%C3%BCnchen.jpg",
+    address: "Some address 5, 12345 Some City",
+    description: "This is a first meetup!",
   },
   {
-    id: 'm2',
-    title: 'A Second Meetup',
+    id: "m2",
+    title: "A Second Meetup",
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1280px-Stadtbild_M%C3%BCnchen.jpg',
-    address: 'Some address 10, 12345 Some City',
-    description: 'This is a second meetup!',
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1280px-Stadtbild_M%C3%BCnchen.jpg",
+    address: "Some address 10, 12345 Some City",
+    description: "This is a second meetup!",
   },
 ];
 
 function HomePage(props) {
-  return <MeetupList meetups={props.meetups} />;
+  return (
+    <React.Fragment>
+      <Head>
+        <title>React Meetups</title>
+        <meta
+          name="description"
+          content="Browse a huge list of highly active React meetups!"
+        />
+      </Head>
+      <MeetupList meetups={props.meetups} />;
+    </React.Fragment>
+  );
 }
 
 // export async function getServerSideProps(context) {
@@ -40,10 +53,10 @@ export async function getStaticProps() {
   // fetch data from an API
   return {
     props: {
-      meetups: DUMMY_MEETUPS
+      meetups: DUMMY_MEETUPS,
     },
-    revalidate: 1
-  }; 
+    revalidate: 1,
+  };
 }
 
 export default HomePage;
